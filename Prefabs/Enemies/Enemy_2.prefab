@@ -74,13 +74,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2164463278185468302}
+  - component: {fileID: 6477188740639160812}
   m_Layer: 0
   m_Name: Enemy_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2164463278185468302
 Transform:
   m_ObjectHideFlags: 0
@@ -100,6 +101,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6477188740639160812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2164463278185468289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d5dd017a18f2e45b7944b8cbbbe77e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2164463278262226335
 GameObject:
   m_ObjectHideFlags: 0
