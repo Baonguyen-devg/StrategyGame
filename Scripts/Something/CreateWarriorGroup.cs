@@ -25,7 +25,7 @@ public class CreateWarriorGroup : AutoMonoBehaviour
         this.spawnWarriorFactories.TryGetValue(name, out var fac) ? fac : null;
 
     public virtual void RequestCreateWarriors() =>
-        this.SpawnGroupEnemy(GameController.Instance.TypeWarriorChoosing);
+        this.SpawnGroupEnemy(GameController.Instance.ButtonStoreWarrior.NameFactory);
 
     private void SpawnGroupEnemy(string name)
     {

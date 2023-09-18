@@ -23,12 +23,12 @@ public class TitleImpact : AutoMonoBehaviour
     private void OnMouseUp()
     {
         if (GameController.Instance.TitleChoosing == null) return;
-        if (GameController.Instance.TypeWarriorChoosing == null) return;
+        if (GameController.Instance.ButtonStoreWarrior == null) return;
 
-        CreateWarriorGroup.Instance.RequestCreateWarriors();
+        GameController.Instance.ButtonStoreWarrior.BuyWarrior();
         GameController.Instance.SetTypeWarriorChoosing(null);
 
         gameObject.SetActive(false);
-        GameController.Instance.Titles.gameObject.SetActive(false);
+        GameController.Instance.Tiles.gameObject.SetActive(false);
     }
 }
