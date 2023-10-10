@@ -12,9 +12,9 @@ public class UIController : AutoMonoBehaviour
     [SerializeField] private Transform winGamePanel;
     [SerializeField] private Transform pauseGamePanel;
 
-    protected override void LoadComponent()
+    [ContextMenu("Load Component")]
+    protected override void LoadComponent() 
     {
-        base.LoadComponent();
         this.gamePanel = transform.Find("Game_Panel");
         this.loseGamePanel = transform.Find("Lose_Game_Panel");
         this.winGamePanel = transform.Find("Win_Game_Panel");
@@ -22,13 +22,15 @@ public class UIController : AutoMonoBehaviour
         this.moneyText = transform.Find("Game_Panel").Find("Coin").GetComponent<Text>();
     }
 
-    protected override void Start()
+    protected override void Start() 
     {
         base.Start();
         GameController.Instance.MoneyEvent += this.ChangeNumberMoney;
         this.ChangeNumberMoney(this, System.EventArgs.Empty);
     }
 
-    private void ChangeNumberMoney(object sender, System.EventArgs e) =>
-        this.moneyText.text = GameController.Instance.MoneyNumber.ToString();
+    private void ChangeNumberMoney(
+        object sender, 
+        System.EventArgs e
+    ) => this.moneyText.text = GameController.Instance.MoneyNumber.ToString();
 }

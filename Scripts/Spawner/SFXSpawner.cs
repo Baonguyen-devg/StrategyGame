@@ -11,11 +11,13 @@ public class SFXSpawner : Spawner<string>
     {
         base.Awake();
         SFXSpawner.instance = this;
-        this.backgroundAudioObject = transform.Find("Prefabs").Find("Background_Audio").GetComponent<AudioSource>();
+        Transform backgroundAudio = transform.Find("Prefabs").Find("Background_Audio");
+        this.backgroundAudioObject = backgroundAudio.GetComponent<AudioSource>();
     }
 
-    public virtual void PlaySound(string soundName)
-    {
+    public virtual void PlaySound(
+        string soundName
+    ) {
         Transform obj = this.GetObjectByType(soundName);
         if (obj == null) return;
 
@@ -28,6 +30,8 @@ public class SFXSpawner : Spawner<string>
     public virtual void PlayBackgroundAudio() => this.backgroundAudioObject.Play();
     public virtual void StopBackGroundAudio() => this.backgroundAudioObject.Stop();
 
-    protected override bool CompareType(Transform p, string type) =>
-        p.name.Equals(type);
+    protected override bool CompareType(
+        Transform p,
+        string type
+    ) => p.name.Equals(type);
 }

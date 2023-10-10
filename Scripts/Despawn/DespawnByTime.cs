@@ -10,7 +10,8 @@ public class DespawnerByTime : Despawner
     protected virtual void OnEnable() => this.timeStartSpawn = default;
 
     public override void DespawnObject() { /*For override*/}
-    protected override bool CanDespawn()
+
+    protected override bool CanDespawn() 
     {
         this.timeStartSpawn = this.timeStartSpawn - Time.deltaTime;
         if (this.timeDespawn > 0) return false;

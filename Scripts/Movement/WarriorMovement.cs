@@ -2,9 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarriorMovement : Movement
+namespace Movement
 {
-    protected override void Move()
+    public class WarriorMovement : BaseMovement
     {
+        [SerializeField] private Animator animator;
+        [SerializeField] private Transform tower;
+
+        [SerializeField] private LayerMask layerMask;
+        [SerializeField] private float radius = 0.2f;
+
+        [ContextMenu("Load Component")]
+        protected override void LoadComponent()
+        {
+            this.tower = GameObject.Find("Tower").transform;
+            this.animator = transform.parent.Find("Model").GetComponent<Animator>();
+        }
+
+        protected override void Move()
+        {
+            Collider2D enemy = Physics2D.OverlapCircle(transform.position, this.radius, this.layerMask);
+            if (enemy != null)
+            {
+                this.LookToObject(enemy.transform);
+                this.animator.SetBool("Attack", true);
+                return;
+            }
+            else this.animator.SetBool("Attack", false);
+            this.LookToObject(this.tower);
+        }
+
+        private void LookToObject(
+            Transform obj
+        ) {
+            Vector3 direction = obj.position - this.transform.parent.position;
+            direction.Normalize();
+            this.animator.SetFloat("Horizontal", direction.x);
+            this.animator.SetFloat("Vertical", direction.y);
+        }
     }
 }

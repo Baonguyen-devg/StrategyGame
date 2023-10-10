@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,27 +20,30 @@ public class ButtonStoreWarrior : AutoMonoBehaviour
 
     public string NameFactory => this.nameFactory;
 
+    [ContextMenu("Load Component")]
     protected override void LoadComponent()
     {
-        this.shapeCountDown = transform.Find("Shape_CountDown").GetComponent<Image>();
-        this.tiles = GameObject.Find("Tiles").transform;
+        base.LoadComponent();
+        this.shapeCountDown = transform.Find("Shape_CountDown")?.GetComponent<Image>();
+        this.tiles ??= GameObject.Find("Tiles")?.transform;
     }
 
-    private void Update()
-    {
-        if (this.canBuy) return;
+    protected override void Start() =>
+        Observable.EveryUpdate().Where(_ => !this.canBuy).Subscribe(_ => this.CanNotBuy());
 
+    private void CanNotBuy()
+    {
         this.timeCountDown = this.timeCountDown - Time.deltaTime;
         this.shapeCountDown.fillAmount = (float)this.timeCountDown / this.rateTimeCountDown;
-
         if (this.timeCountDown > 0) return;
         this.canBuy = true;
         (this.timeCountDown, this.shapeCountDown.fillAmount) = (this.rateTimeCountDown, 1);
         this.shapeCountDown.gameObject.SetActive(false);
     }
 
-    public virtual void PressButton(string nameFactoyWarrior)
-    {
+    public virtual void PressButton(
+        string nameFactoyWarrior
+    ) {
         if (!this.canBuy) return;
         if (this.money > GameController.Instance.MoneyNumber) return;
         GameController.Instance.SetTypeWarriorChoosing(this);

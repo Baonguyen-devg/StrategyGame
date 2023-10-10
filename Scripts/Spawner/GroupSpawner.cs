@@ -10,8 +10,7 @@ public class GroupSpawner : Spawner<string>
     protected override bool CompareType(Transform p, string type) =>
         p.name.Equals(type);
 
-    protected override void Awake()
-    {
+    protected override void Awake() {
         base.Awake();
         GroupSpawner.instance = this;
     }

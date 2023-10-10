@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7215001350360334244}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Damage_Sender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4796336945729858732}
   - component: {fileID: 4117900209117909302}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +79,12 @@ MonoBehaviour:
   maximumSpeed: 10
   minimumSpeed: 0.01
   isMovingFast: 0
+  animator: {fileID: 8184067571556446296}
+  tower: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  radius: 2
 --- !u!1 &2439567918119548360
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +96,7 @@ GameObject:
   - component: {fileID: 1346859567488441488}
   - component: {fileID: 8150605504101267704}
   - component: {fileID: 8184067571556446296}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4204259173217370689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Damage_Receiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,13 +231,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6966467048793494064}
   - component: {fileID: 6178779340318676098}
-  m_Layer: 0
+  - component: {fileID: 3413244617457538269}
+  m_Layer: 6
   m_Name: Warrior_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6966467048793494064
 Transform:
   m_ObjectHideFlags: 0
@@ -263,3 +270,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b092ffcc0cec8459cb49afea7f1669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &3413244617457538269
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283780556104799630}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25

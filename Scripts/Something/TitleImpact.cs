@@ -7,20 +7,22 @@ public class TitleImpact : AutoMonoBehaviour
 {
     [SerializeField] private Transform model = default;
 
+    [ContextMenu("Load Component")]
     protected override void LoadComponent() => this.model ??= transform.Find("Model");
-    private void OnMouseEnter()
+
+    private void OnMouseEnter() 
     {
         GameController.Instance.SetTitleChoosing(transform);
         this.model.gameObject.SetActive(true);
     }
 
-    private void OnMouseExit()
+    private void OnMouseExit() 
     {
         GameController.Instance.SetTitleChoosing(null);
         this.model.gameObject.SetActive(false);
     }
 
-    private void OnMouseUp()
+    private void OnMouseUp() 
     {
         if (GameController.Instance.TitleChoosing == null) return;
         if (GameController.Instance.ButtonStoreWarrior == null) return;

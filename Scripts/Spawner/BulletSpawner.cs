@@ -7,10 +7,12 @@ public class BulletSpawner : Spawner<string>
     private static BulletSpawner instance;
     public static BulletSpawner Instance => instance;
 
-    protected override bool CompareType(Transform p, string type) =>
-        p.name.Equals(type);
+    protected override bool CompareType(
+        Transform p,
+        string type
+    ) => p.name.Equals(type);
 
-    protected override void Awake()
+    protected override void Awake() 
     {
         base.Awake();
         BulletSpawner.instance = this;

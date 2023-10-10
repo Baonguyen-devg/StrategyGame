@@ -5,25 +5,17 @@ using UnityEngine;
 public abstract class Spawner<T> : AutoMonoBehaviour
 {
     [SerializeField] protected List<Transform> poolObjects;
-
-    //Begin predicatedload of components
-    [SerializeField] protected List<System.Action> loadComponentActions;
-
     [SerializeField] protected List<Transform> listPrefab = new List<Transform>();
     [SerializeField] protected Transform holder;
-    //End predicatedload of components
 
+    [ContextMenu("Load Component")]
     protected override void LoadComponent()
     {
         base.LoadComponent();
+        this.holder = transform.Find("Holder");
+
         if (this.listPrefab.Count != 0) this.listPrefab.Clear();
-        this.loadComponentActions = new List<System.Action>
-        {
-            () => this.holder = transform.Find("Holder"),
-            () => this.listPrefab.AddRange(transform.Find("Prefabs").Cast<Transform>())
-        };
-        foreach (var action in this.loadComponentActions)
-            action?.Invoke();
+        this.listPrefab.AddRange(transform.Find("Prefabs").Cast<Transform>());
     }
 
     public virtual Transform Spawn(T typeObject, Vector3 pos, Quaternion rot)
@@ -46,14 +38,16 @@ public abstract class Spawner<T> : AutoMonoBehaviour
         return (prefabs.Any()) ? prefabs[0] : null;
     }
 
-    public virtual void Despawn(Transform obj)
-    {
+    public virtual void Despawn(
+        Transform obj
+    ) {
         obj.gameObject.SetActive(false);
         this.poolObjects.Add(obj);
     }
 
-    protected virtual Transform GetPoolObject(Transform obj)
-    {
+    protected virtual Transform GetPoolObject(
+        Transform obj
+    ) {
         foreach (Transform prefab in this.poolObjects)
             if (obj.name == prefab.name && !prefab.gameObject.activeSelf)
             {
