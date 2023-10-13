@@ -67,7 +67,7 @@ namespace UniRx
             return new TimestampObservable<TSource>(source, scheduler);
         }
 
-        public static IObservable<UniRx.TimeInterval<TSource>> TimeInterval<TSource>(this IObservable<TSource> source)
+        public static IObservable<UniRx.TimeInterval<TSource>> Interval<TSource>(this IObservable<TSource> source, TimeSpan timeSpan)
         {
             return TimeInterval(source, Scheduler.DefaultSchedulers.TimeBasedOperations);
         }

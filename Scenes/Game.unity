@@ -4187,17 +4187,6 @@ Transform:
   m_Father: {fileID: 1792317394}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &463847602 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 738091232, guid: 2b40f8ad1892af3468b188fec752ee2b, type: 3}
-  m_PrefabInstance: {fileID: 1091277353531759491}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 067e8eed0d61c4a4e89916d0f41d9869, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &464104328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23604,7 +23593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2031652730
 Transform:
   m_ObjectHideFlags: 0
@@ -24221,14 +24210,6 @@ PrefabInstance:
       propertyPath: tower
       value: 
       objectReference: {fileID: 965094036}
-    - target: {fileID: 738091232, guid: 2b40f8ad1892af3468b188fec752ee2b, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 131713098844435875, guid: 2b40f8ad1892af3468b188fec752ee2b, type: 3}
-      propertyPath: enemyMovement
-      value: 
-      objectReference: {fileID: 463847602}
     - target: {fileID: 1091277353148225880, guid: 2b40f8ad1892af3468b188fec752ee2b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -24276,14 +24257,6 @@ PrefabInstance:
     - target: {fileID: 1091277353148225881, guid: 2b40f8ad1892af3468b188fec752ee2b, type: 3}
       propertyPath: m_Name
       value: Small Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1091277353531759493, guid: 2b40f8ad1892af3468b188fec752ee2b, type: 3}
-      propertyPath: layerMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 1091277354725850738, guid: 2b40f8ad1892af3468b188fec752ee2b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b40f8ad1892af3468b188fec752ee2b, type: 3}
@@ -24559,7 +24532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6337160454094341765, guid: 1c397365dcc46724b8073edf9731afb1, type: 3}
       propertyPath: m_Name
-      value: Sword_Warrior
+      value: Sword Warrior
       objectReference: {fileID: 0}
     - target: {fileID: 6337160454094341765, guid: 1c397365dcc46724b8073edf9731afb1, type: 3}
       propertyPath: m_IsActive

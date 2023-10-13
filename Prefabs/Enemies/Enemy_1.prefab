@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36de63c85bd2ddd409f3378f455a0048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataSO: {fileID: 0}
+  dataSO: {fileID: 11400000, guid: 909682a747a33a144b54c6d7fe416da2, type: 2}
   currentHealth: 100
   maximumHealth: 100
   boxCollider2D: {fileID: 3202287039792933208}
@@ -208,6 +208,7 @@ Transform:
   - {fileID: 1091277355003319709}
   - {fileID: 1091277353101981549}
   - {fileID: 4174389795247542482}
+  - {fileID: 6664994428049295597}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -239,6 +240,7 @@ MonoBehaviour:
   enemyDamageReceiver: {fileID: 7646617613139696829}
   enemyDamgeSender: {fileID: 3967633062388273162}
   enemyImpact: {fileID: 8746759609305952455}
+  enemyCloseCombatAttack: {fileID: 5669405965283473122}
   enemyMovement: {fileID: 738091232}
 --- !u!114 &1091277353531759493
 MonoBehaviour:
@@ -255,6 +257,10 @@ MonoBehaviour:
   DeveloperDescriber: 
   enemyController: {fileID: 131713098844435875}
   stateBehaviour: 3
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  radius: 0.1
 --- !u!1 &1091277353674811125
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1091277354725850737
 Transform:
   m_ObjectHideFlags: 0
@@ -412,10 +418,6 @@ MonoBehaviour:
   distanceStop: 0.2
   animator: {fileID: 6571450530041464432}
   tower: {fileID: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  radius: 1
 --- !u!1 &1091277355003319710
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,3 +465,55 @@ MonoBehaviour:
   dataSO: {fileID: 11400000, guid: 9364a25bcab3b46498bab2603c363eef, type: 2}
   maximumDame: 10
   dame: 10
+--- !u!1 &7143138546177900982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6664994428049295597}
+  - component: {fileID: 5669405965283473122}
+  m_Layer: 3
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6664994428049295597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7143138546177900982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1091277353148225880}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5669405965283473122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7143138546177900982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dfea3d930a1cf4ba5f75d277cc2fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationClip: {fileID: 7400000, guid: 900f09b728adad645af3dd43bb057248, type: 2}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  enemyController: {fileID: 131713098844435875}
+  radiux: 0.1
+  animator: {fileID: 6571450530041464432}
+  rateTimeTakeDame: 1.0166667

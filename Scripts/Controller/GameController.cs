@@ -12,6 +12,8 @@ public class GameController : AutoMonoBehaviour
 
     public event System.EventHandler MoneyEvent;
 
+    #region Variables 
+
     [Header("[ Game Informations ]"), Space(6)]
     [SerializeField] private int moneyNumber = DEFAULT_MONEY_NUMBER;
     [SerializeField] private int maxMoneyNumber = DEFAULT_MAX_MONEY_NUMBER;
@@ -20,15 +22,22 @@ public class GameController : AutoMonoBehaviour
     [SerializeField] private Transform titleChoosing;
     [SerializeField] private ButtonStoreWarrior buttonStoreWarrior;
 
-    //Game Controller Datas 
+    #endregion
+
     public int MoneyNumber => this.moneyNumber;
     public Transform Tiles => this.tiles;
     public Transform TitleChoosing => this.titleChoosing;
     public ButtonStoreWarrior ButtonStoreWarrior => this.buttonStoreWarrior;
 
+    #region Load component methods;
+
     [ContextMenu("Load Component")]
     protected override void LoadComponent() => 
         this.tiles = GameObject.Find("Tiles").transform;
+
+    #endregion
+
+    #region Main methods
 
     protected override void Awake()
     {
@@ -60,4 +69,6 @@ public class GameController : AutoMonoBehaviour
     public virtual void SetTypeWarriorChoosing(
         ButtonStoreWarrior type
     ) => this.buttonStoreWarrior = type;
+
+    #endregion
 }

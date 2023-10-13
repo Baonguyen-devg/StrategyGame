@@ -13,7 +13,7 @@ public class EnemyStateBehaviour : AutoMonoBehaviour
     [SerializeField] private StateBehaviour stateBehaviour = StateBehaviour.none;
 
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private float radius = 1f;
+    [SerializeField] private float radius = 0.1f;
 
     [ContextMenu("Load Component")]
     protected override void LoadComponent()
@@ -29,7 +29,7 @@ public class EnemyStateBehaviour : AutoMonoBehaviour
         {
             this.HaveWarrior();
             this.CheckState();
-        });
+        }).AddTo(this);
     }
 
     private void HaveWarrior()
@@ -66,12 +66,14 @@ public class EnemyStateBehaviour : AutoMonoBehaviour
     private void MovingBehaviour()
     {
         this.enemyController.GetEnemyMovement().gameObject.SetActive(true);
+        this.enemyController.GetEnemyCloseCombatAttack().gameObject.SetActive(false);
         this.stateBehaviour = StateBehaviour.none;
     }
 
     private void AttackBehaviour()
     {
         this.enemyController.GetEnemyMovement().gameObject.SetActive(false);
+        this.enemyController.GetEnemyCloseCombatAttack().gameObject.SetActive(true);
         this.enemyController.GetEnemyImpact().gameObject.SetActive(true);
         this.stateBehaviour = StateBehaviour.none;
     }

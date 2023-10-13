@@ -6,6 +6,7 @@ public abstract class BaseDamageReceiver : BaseLoadConfigData<DamageReceiverSO>
 {
     protected const int DEFAULT_MAXIMUM_HEALTH = 100;
 
+    #region Variables
     [Header("[ Base damage receiver ]"), Space(10)]
     [SerializeField] protected int currentHealth = DEFAULT_MAXIMUM_HEALTH;
     [SerializeField] protected int maximumHealth = DEFAULT_MAXIMUM_HEALTH;
@@ -13,7 +14,9 @@ public abstract class BaseDamageReceiver : BaseLoadConfigData<DamageReceiverSO>
     [SerializeField] protected bool isDead = false;
 
     public int CurrentHealth => this.currentHealth;
+    #endregion
 
+    #region Load component methods
     [ContextMenu("Load Component")]
     protected override void LoadComponent()
     {
@@ -24,14 +27,16 @@ public abstract class BaseDamageReceiver : BaseLoadConfigData<DamageReceiverSO>
         this.currentHealth = this.dataSO.GetCurrentHealth();
         this.maximumHealth = this.dataSO.GetMaximumHealth();
     }
+    #endregion
 
+    #region Main methods
     protected override void Start() =>
         Observable.EveryUpdate().Where(_ => this.IsDead())
                   .Subscribe(_ =>
                   {
                       this.SetDead(true);
                       this.OnDead();
-                  });
+                  }).AddTo(this);
 
     protected virtual void ResetHealthToMaximum() =>
         (this.isDead, this.currentHealth) = (false, this.maximumHealth);
@@ -47,4 +52,5 @@ public abstract class BaseDamageReceiver : BaseLoadConfigData<DamageReceiverSO>
     protected virtual void SetDead(bool status) => this.isDead = status;
 
     protected abstract void OnDead();
+    #endregion
 }

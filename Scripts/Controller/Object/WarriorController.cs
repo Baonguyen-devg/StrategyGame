@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarriorController : MonoBehaviour
+public class WarriorController : AutoMonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private WarriorDamageReceiver warriorDamageReceiver;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    public WarriorDamageReceiver WarriorDamageReceiver => this.warriorDamageReceiver;
 }

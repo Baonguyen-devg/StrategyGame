@@ -6,10 +6,13 @@ using UnityEngine;
 public class GenericRandomObjectFactory<T, Pooling> : AutoMonoBehaviour, IFactory
     where T : IProduct where Pooling: Spawner<string> 
 {
+    #region Variables
     [Header("[ Factory's Information ]"), Space(6)]
     protected Dictionary<string, T> products = new Dictionary<string, T>();
     [SerializeField] protected Pooling poolingSpawner;
+    #endregion
 
+    #region Main methods
     protected override void Awake() 
     {
         base.Awake();
@@ -29,10 +32,11 @@ public class GenericRandomObjectFactory<T, Pooling> : AutoMonoBehaviour, IFactor
         string nameObject = this.products.ElementAt(keyRandom).Key;
         if (poolingSpawner is not Spawner<string>) 
         {
-            Debug.LogError(poolingSpawner.name + " is not a pooling class");
+            NewLog.DebugLogError(poolingSpawner.name + " is not a pooling class");
             return null;
         }
         Transform obj = poolingSpawner.Spawn(nameObject, pos, rot);
         return obj.GetComponent<T>();
     }
+    #endregion
 }

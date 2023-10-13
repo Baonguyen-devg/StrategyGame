@@ -10,6 +10,8 @@ public class InputController : AutoMonoBehaviour
 
     public event System.EventHandler EscapePressEvent;
 
+    #region Main methods
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,4 +23,6 @@ public class InputController : AutoMonoBehaviour
 
     private void OnEscapePress() =>
         this.EscapePressEvent?.Invoke(null, System.EventArgs.Empty);
+
+    #endregion
 }
