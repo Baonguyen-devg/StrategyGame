@@ -6,6 +6,5 @@ public class WarriorController : AutoMonoBehaviour
 {
     [SerializeField] private WarriorDamageReceiver warriorDamageReceiver;
 
-
     public WarriorDamageReceiver WarriorDamageReceiver => this.warriorDamageReceiver;
 }

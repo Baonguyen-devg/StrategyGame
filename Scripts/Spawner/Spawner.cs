@@ -4,10 +4,13 @@ using UnityEngine;
 
 public abstract class Spawner<T> : AutoMonoBehaviour
 {
+    #region Variables
     [SerializeField] protected List<Transform> poolObjects;
     [SerializeField] protected List<Transform> listPrefab = new List<Transform>();
     [SerializeField] protected Transform holder;
+    #endregion
 
+    #region Load component methods
     [ContextMenu("Load Component")]
     protected override void LoadComponent()
     {
@@ -17,7 +20,9 @@ public abstract class Spawner<T> : AutoMonoBehaviour
         if (this.listPrefab.Count != 0) this.listPrefab.Clear();
         this.listPrefab.AddRange(transform.Find("Prefabs").Cast<Transform>());
     }
+    #endregion
 
+    #region Main methods
     public virtual Transform Spawn(T typeObject, Vector3 pos, Quaternion rot)
     {
         Transform obj = this.GetObjectByType(typeObject);
@@ -62,4 +67,5 @@ public abstract class Spawner<T> : AutoMonoBehaviour
 
     public virtual string GetRandomPrefab() =>
         this.listPrefab[Random.Range(0, this.listPrefab.Count)].name;
+    #endregion
 }

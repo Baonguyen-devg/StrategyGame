@@ -6,6 +6,10 @@ namespace Movement
 {
     public class WarriorMovement : BaseMovement
     {
+        private readonly string TRIGGER_NAME = "Attack";
+        private readonly string HORIZONTAL_NAME = "Horizontal";
+        private readonly string VERTICAL_NAME = "Vertical";
+
         [SerializeField] private Animator animator;
         [SerializeField] private Transform tower;
 
@@ -25,10 +29,10 @@ namespace Movement
             if (enemy != null)
             {
                 this.LookToObject(enemy.transform);
-                this.animator.SetBool("Attack", true);
+                this.animator.SetBool(TRIGGER_NAME, true);
                 return;
             }
-            else this.animator.SetBool("Attack", false);
+            else this.animator.SetBool(TRIGGER_NAME, false);
             this.LookToObject(this.tower);
         }
 
@@ -37,8 +41,8 @@ namespace Movement
         ) {
             Vector3 direction = obj.position - this.transform.parent.position;
             direction.Normalize();
-            this.animator.SetFloat("Horizontal", direction.x);
-            this.animator.SetFloat("Vertical", direction.y);
+            this.animator.SetFloat(HORIZONTAL_NAME, direction.x);
+            this.animator.SetFloat(VERTICAL_NAME, direction.y);
         }
     }
 }

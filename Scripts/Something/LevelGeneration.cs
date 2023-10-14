@@ -9,7 +9,9 @@ public class LevelGeneration : AutoMonoBehaviour
     private const float DEFAULT_RATE_TIME_COUNTDOWN = 4f;
     private const float DEFAULT_RATE_TIME_CHANGE_FACTORY = 30f;
     private const string DEFAULT_NAME_FACTORY_PRESENT = "Small_Enemy_Factory";
+    private const string DEFAULT_GROUP_ENEMY_NAME = "Group_Enemy";
 
+    #region Variables
     private event System.EventHandler LevelGenerateEvent;
     [SerializeField] private List<Transform> points = new List<Transform>();
     [SerializeField] private List<Transform> processSpawn = new List<Transform>();
@@ -20,7 +22,9 @@ public class LevelGeneration : AutoMonoBehaviour
 
     [SerializeField] private string nameFactoryPresent = DEFAULT_NAME_FACTORY_PRESENT;
     [SerializeField] private int countProcess = 0;
+    #endregion
 
+    #region Load component methods
     [ContextMenu("Load Component")]
     protected override void LoadComponent() 
     {
@@ -29,7 +33,9 @@ public class LevelGeneration : AutoMonoBehaviour
         this.points.AddRange(transform.Find("Spawn_Enemy_Points").Cast<Transform>());
         this.processSpawn.AddRange(transform.Find("Process").Cast<Transform>());
     }
+    #endregion
 
+    #region Main methods
     protected override void Awake()
     {
         base.Awake();
@@ -67,11 +73,12 @@ public class LevelGeneration : AutoMonoBehaviour
         System.EventArgs e
     ) {
         Transform point = this.GetRandomPoint();
-        Transform groupSpawn = GroupSpawner.Instance.Spawn("Group_Enemy", point.position, point.rotation);
+        Transform groupSpawn = GroupSpawner.Instance.Spawn(DEFAULT_GROUP_ENEMY_NAME, point.position, point.rotation);
         var factoy = this.GetFactoryByName(this.nameFactoryPresent);
  
         var listPointEnemy = groupSpawn.Cast<Transform>();
         foreach (Transform pointSpawn in listPointEnemy)
             factoy.SpawnMechanism(pointSpawn.position, pointSpawn.rotation);
     }
+    #endregion
 }

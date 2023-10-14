@@ -6,6 +6,7 @@ using UniRx;
 public class EnemyCloseCombatAttack : AutoMonoBehaviour
 {
     private const float DEFAULT_RADIUX = 0.1f;
+    private readonly string TRIGGER_NAME = "Attack";
 
     [Header("[ Component get from asset, don't load in load methods ]"), Space(6)]
     [SerializeField] private AnimationClip animationClip;
@@ -38,15 +39,14 @@ public class EnemyCloseCombatAttack : AutoMonoBehaviour
                   {
                       var warrior = this.HaveWarriorInRegion();
                       if (warrior == null) return;
-                      NewLog.DebugLog("HERE " + warrior.name);
                       this.enemyController.GetEnemyDamgeSender().Send(warrior);
                   }).AddTo(this);
 
     private Transform HaveWarriorInRegion() =>
         Physics2D.OverlapCircle(transform.position, this.radiux, this.layerMask).transform;
 
-    private void OnEnable() => this.animator.SetBool("Attack", true);
+    private void OnEnable() => this.animator.SetBool(TRIGGER_NAME, true);
 
-    private void OnDisable() => this.animator.SetBool("Attack", false);
+    private void OnDisable() => this.animator.SetBool(TRIGGER_NAME, false);
     #endregion
 }
