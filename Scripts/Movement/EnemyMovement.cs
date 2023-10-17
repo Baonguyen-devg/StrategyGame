@@ -6,7 +6,7 @@ using Unity.Profiling;
 public class EnemyMovement : BaseMovement
 {
     private const float DEFAULT_DISTANCE_STOP = 0.2f;
-    private readonly string TRIGGER_NAME = "Attack";
+    private readonly int HASH_ATTACK_TRIGGER = Animator.StringToHash("Attack");
     private readonly string HORIZONTAL_NAME = "Horizontal";
     private readonly string VERTICAL_NAME = "Vertical";
 
@@ -27,7 +27,7 @@ public class EnemyMovement : BaseMovement
     #endregion
 
     #region Main methods
-    private void OnEnable() => this.animator.SetBool(TRIGGER_NAME, false);
+    private void OnEnable() => this.animator.SetBool(HASH_ATTACK_TRIGGER, false);
 
     protected override void Move()
     {

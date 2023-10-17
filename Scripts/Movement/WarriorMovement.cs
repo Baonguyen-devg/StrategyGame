@@ -6,7 +6,7 @@ namespace Movement
 {
     public class WarriorMovement : BaseMovement
     {
-        private readonly string TRIGGER_NAME = "Attack";
+        private readonly int HASH_ATTACK_TRIGGER = Animator.StringToHash("Attack");
         private readonly string HORIZONTAL_NAME = "Horizontal";
         private readonly string VERTICAL_NAME = "Vertical";
 
@@ -29,10 +29,10 @@ namespace Movement
             if (enemy != null)
             {
                 this.LookToObject(enemy.transform);
-                this.animator.SetBool(TRIGGER_NAME, true);
+                this.animator.SetBool(HASH_ATTACK_TRIGGER, true);
                 return;
             }
-            else this.animator.SetBool(TRIGGER_NAME, false);
+            else this.animator.SetBool(HASH_ATTACK_TRIGGER, false);
             this.LookToObject(this.tower);
         }
 

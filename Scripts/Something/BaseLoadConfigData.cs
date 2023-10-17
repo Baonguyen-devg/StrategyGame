@@ -19,7 +19,7 @@ public class BaseLoadConfigData<T> : AutoMonoBehaviour where T: ScriptableObject
     {
         base.LoadComponent();
         string Path = this.StringBuilderPath();
-        NewLog.DebugLog(Path);
+        this.Logger(Path);
         this.dataSO = Resources.Load<T>(Path);
     }
     #endregion

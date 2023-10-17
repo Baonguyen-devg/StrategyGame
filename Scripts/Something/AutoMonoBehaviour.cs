@@ -10,6 +10,8 @@ public class AutoMonoBehaviour : MonoBehaviour
 
     protected virtual void LoadComponent() { /* For Override */ }
 
+    [SerializeField] protected bool haveLogger = false;
+
     protected virtual void Start() {
         StartCoroutine(routine: LoadWaitForShortTime());
         StartCoroutine(routine: LoadWaitForMediumTime());
@@ -29,5 +31,11 @@ public class AutoMonoBehaviour : MonoBehaviour
     protected virtual IEnumerator LoadWaitForLongTime() {
         yield return new WaitForSeconds(seconds: 1.5f);
         /* For Override */
+    }
+
+    protected void Logger(string message)
+    {
+        if (!this.haveLogger) return;
+        NewLog.DebugLog(message: message);
     }
 }

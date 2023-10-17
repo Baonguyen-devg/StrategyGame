@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Spawner<T> : AutoMonoBehaviour
 {
     #region Variables
+    [Space(6), Header("[ Component ]"), Space(6)]
     [SerializeField] protected List<Transform> poolObjects;
     [SerializeField] protected List<Transform> listPrefab = new List<Transform>();
     [SerializeField] protected Transform holder;
